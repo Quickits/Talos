@@ -10,9 +10,9 @@ import cn.quickits.arch.mvvm.QLceViewFragment
 
 class LecFragment : QLceViewFragment<Long, UserLceViewModel, Chronometer>() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_lce, container, false)
-    }
+    override fun bindLayout(): Int = R.layout.fragment_lce
+
+    override fun pageName(): String = LecFragment::javaClass.name
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,6 +20,11 @@ class LecFragment : QLceViewFragment<Long, UserLceViewModel, Chronometer>() {
         errorView.setOnClickListener {
             viewModel.load(false)
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.load(false)
     }
 
     override fun createViewModel(): UserLceViewModel =
