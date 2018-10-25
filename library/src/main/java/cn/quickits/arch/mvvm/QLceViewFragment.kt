@@ -2,16 +2,16 @@ package cn.quickits.arch.mvvm
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.util.Log
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import cn.quickits.arch.mvvm.base.BaseFragment
 import cn.quickits.arch.mvvm.data.ErrorData
 import cn.quickits.arch.mvvm.util.LceAnimator
 import cn.quickits.arch.mvvm.util.MaterialLceAnimator
 
-abstract class QLceViewFragment<M, VM : QLceViewModel<M>, CV : View> : Fragment() {
+abstract class QLceViewFragment<M, VM : QLceViewModel<M>, CV : View> : BaseFragment() {
 
     lateinit var viewModel: VM
 
@@ -35,26 +35,17 @@ abstract class QLceViewFragment<M, VM : QLceViewModel<M>, CV : View> : Fragment(
         contentView = createContentView(view)
         errorView = createErrorView(view)
 
-
         viewModel.loader.observe(this, Observer { pullToRefresh ->
             showLoading(pullToRefresh)
-            Log.d("QLceViewFragment", "showLoading: $pullToRefresh")
         })
 
         viewModel.content.observe(this, Observer { content ->
             showContent(content)
-            Log.d("QLceViewFragment", "showContent")
         })
 
         viewModel.error.observe(this, Observer { errorData ->
             showError(errorData)
-            Log.d("QLceViewFragment", "showError")
         })
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel.load(false)
     }
 
     protected open fun createLoadingView(view: View): View = view.findViewById(R.id.loading_view)
@@ -72,6 +63,8 @@ abstract class QLceViewFragment<M, VM : QLceViewModel<M>, CV : View> : Fragment(
     }
 
     open fun showContent(content: M?) {
+        content ?: return
+
         animateContentViewIn()
     }
 
@@ -84,6 +77,16 @@ abstract class QLceViewFragment<M, VM : QLceViewModel<M>, CV : View> : Fragment(
             showToastError(msg)
         } else {
             errorView.text = msg
+
+            if (errorData.eIcon != -1) {
+                val drawable = ContextCompat.getDrawable(context!!, errorData.eIcon)
+                errorView.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        null,
+                        drawable,
+                        null,
+                        null
+                )
+            }
             animateErrorViewIn()
         }
     }

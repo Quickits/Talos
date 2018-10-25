@@ -13,8 +13,6 @@ abstract class QLceViewModel<M> : ViewModel() {
 
     val error: MutableLiveData<ErrorData> = SingleLiveEventLiveData()
 
-    abstract fun load(pullToRefresh: Boolean)
-
     fun displayLoader(pullToRefresh: Boolean) {
         loader.value = pullToRefresh
     }
