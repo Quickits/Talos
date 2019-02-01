@@ -1,8 +1,8 @@
 package cn.quickits.arch.mvvm
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast

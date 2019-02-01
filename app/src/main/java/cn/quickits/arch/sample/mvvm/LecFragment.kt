@@ -1,18 +1,14 @@
 package cn.quickits.arch.sample.mvvm
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Chronometer
 import cn.quickits.arch.mvvm.QLceViewFragment
 
 class LecFragment : QLceViewFragment<Long, UserLceViewModel, Chronometer>() {
 
-    override fun bindLayout(): Int = R.layout.fragment_lce
-
-    override fun pageName(): String = LecFragment::javaClass.name
+    override fun bindLayoutId(): Int = R.layout.fragment_lce
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

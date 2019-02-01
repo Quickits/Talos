@@ -1,7 +1,7 @@
 package cn.quickits.arch.mvvm
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import cn.quickits.arch.mvvm.data.ErrorData
 import cn.quickits.arch.mvvm.livecyle.SingleLiveEventLiveData
 

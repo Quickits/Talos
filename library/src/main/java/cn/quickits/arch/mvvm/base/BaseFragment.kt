@@ -1,10 +1,10 @@
 package cn.quickits.arch.mvvm.base
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.ActionBar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,12 +21,10 @@ abstract class BaseFragment : Fragment(), OnBackPressedHandler, OnWindowFocusCha
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(bindLayout(), container, false)
+        return inflater.inflate(bindLayoutId(), container, false)
     }
 
-    abstract fun bindLayout(): Int
-
-    abstract fun pageName(): String
+    abstract fun bindLayoutId(): Int
 
     override fun onStart() {
         if (isStopped) {
@@ -45,18 +43,24 @@ abstract class BaseFragment : Fragment(), OnBackPressedHandler, OnWindowFocusCha
 
     }
 
-    fun setSupportActionBar(toolbar: Toolbar?) {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupActionBar(getSupportActionBar())
+    }
+
+    open fun setSupportActionBar(toolbar: Toolbar?) {
         getAppCompatActivity()?.setSupportActionBar(toolbar)
     }
 
-    fun getAppCompatActivity(): AppCompatActivity? {
-        val act = activity
-        return act as? AppCompatActivity
-    }
+    open fun getAppCompatActivity(): AppCompatActivity? = activity as? AppCompatActivity
 
-    fun getSupportActionBar(): ActionBar? = getAppCompatActivity()?.supportActionBar
+    open fun getSupportActionBar(): ActionBar? = getAppCompatActivity()?.supportActionBar
 
     override fun onBackPressed(): Boolean = false
+
+    open fun setupActionBar(actionBar: ActionBar?) {
+
+    }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
 
