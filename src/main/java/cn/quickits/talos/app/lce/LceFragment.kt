@@ -1,4 +1,4 @@
-package cn.quickits.arch.mvvm
+package cn.quickits.talos.app.lce
 
 import androidx.lifecycle.Observer
 import android.os.Bundle
@@ -6,10 +6,10 @@ import androidx.core.content.ContextCompat
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import cn.quickits.arch.base.app.BaseFragment
-import cn.quickits.arch.mvvm.data.ErrorData
-import cn.quickits.arch.mvvm.animator.LceAnimator
-import cn.quickits.arch.mvvm.animator.MaterialLceAnimator
+import cn.quickits.talos.app.BaseFragment
+import cn.quickits.talos.app.lce.data.ErrorData
+import cn.quickits.talos.app.lce.animator.LceAnimator
+import cn.quickits.talos.app.lce.animator.MaterialLceAnimator
 
 abstract class LceFragment<M, VM : LceViewModel<M>, CV : View> : BaseFragment() {
 

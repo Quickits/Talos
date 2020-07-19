@@ -1,9 +1,9 @@
-package cn.quickits.arch.mvvm
+package cn.quickits.talos.app.lce
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import cn.quickits.arch.mvvm.data.ErrorData
-import cn.quickits.arch.base.livecyle.SingleLiveEventLiveData
+import cn.quickits.talos.app.lce.data.ErrorData
+import cn.quickits.talos.livecyle.SingleLiveEventLiveData
 
 abstract class LceViewModel<M> : ViewModel() {
 

@@ -1,4 +1,4 @@
-package cn.quickits.arch.mvvm.animator
+package cn.quickits.talos.app.lce.animator
 
 import android.view.View
 

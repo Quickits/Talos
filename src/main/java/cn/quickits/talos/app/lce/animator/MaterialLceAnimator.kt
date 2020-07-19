@@ -1,11 +1,11 @@
-package cn.quickits.arch.mvvm.animator
+package cn.quickits.talos.app.lce.animator
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.view.View
-import cn.quickits.arch.mvvm.R
+import cn.quickits.talos.app.lce.R
 
 class MaterialLceAnimator : LceAnimator {
 

@@ -1,6 +1,6 @@
-package cn.quickits.arch.mvvm
+package cn.quickits.talos.app.lce
 
-import cn.quickits.arch.base.app.BaseActivity
+import cn.quickits.talos.app.BaseActivity
 
 /**
  * @author Gavin Liu

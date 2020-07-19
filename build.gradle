@@ -1,5 +1,8 @@
 import cn.quickits.tools.make.Config
 
 dependencies{
-    api Config.deps.quickits.base.dep
+    api Config.deps.kotlin.dep
+    api Config.deps.androidx.appcompat.dep
+    api Config.deps.androidx.core_ktx.dep
+    api Config.deps.androidx.constraint_layout.dep
 }
