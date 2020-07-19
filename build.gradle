@@ -1,7 +1,10 @@
 import cn.quickits.tools.make.Config
 
-dependencies{
+dependencies {
     api Config.deps.androidx.appcompat.dep
     api Config.deps.androidx.core_ktx.dep
     api Config.deps.androidx.constraint_layout.dep
+    api Config.deps.androidx.lifecycle_runtime_ktx.dep
+    api Config.deps.androidx.lifecycle_livedata_ktx.dep
+    api Config.deps.androidx.lifecycle_viewmodel_ktx.dep
 }
